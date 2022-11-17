@@ -13,9 +13,8 @@ package View;
 
 public class JFAtualizarVaga extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFAtualizarVaga
-     */
+        private static int idVaga; 
+    
     public JFAtualizarVaga(int idVaga) {
         initComponents();
         VagaDAO vdao = new VagaDAO();
@@ -84,6 +83,7 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
             }
         });
 
+        bGTipoVaga.add(jRBParalela);
         jRBParalela.setText("Paralela");
 
         jBtnCancelar.setText("Cancelar");
@@ -170,7 +170,17 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNumeroActionPerformed
-        // TODO add your handling code here:
+        Vaga v = new Vaga();
+        VagaDAO vdao = new VagaDAO();
+        v.setIdVaga(Integer.parseInt(lblIdVaga.getText()));
+        v.setNumero(Integer.parseInt(jTFNumero.getText()));
+        v.setRua(jTFRua.getText());
+        if(jRBObliqua.isSelected()){
+            v.setObliqua(true);            
+        }else if(jRBParalela.isSelected()){
+            v.setObliqua(false);  
+        }
+        vdao.update(v);
     }//GEN-LAST:event_jTFNumeroActionPerformed
 
     private void jRBObliquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBObliquaActionPerformed
@@ -216,7 +226,8 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAtualizarVaga().setVisible(true);
+                JFAtualizarVaga frame = new JFAtualizarVaga (idVaga);
+                frame.setVisible(true);
             }
         });
     }

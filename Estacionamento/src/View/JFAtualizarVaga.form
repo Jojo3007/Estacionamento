@@ -142,6 +142,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBParalela">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="bGTipoVaga"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Paralela"/>
       </Properties>
     </Component>
